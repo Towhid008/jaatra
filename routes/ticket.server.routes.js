@@ -10,6 +10,7 @@ module.exports = function(app){
 	.post(users.requiresLogin, tickets.create);
 	
 	app.route('/tickets/search').get(tickets.searchView);
+	app.route('/tickets/findView').get(tickets.findView);
 	
 		app.route('/tickets/:ticketId').get(tickets.singleTicketView);
 	

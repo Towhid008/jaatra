@@ -19,6 +19,46 @@ module.exports.list = function(req, res) {
 };
 
 
+
+
+
+module.exports.busesList= function(req, res){
+  console.log(req.query);
+  Bus.find({busLicense: req.query.busLicense}).populate("busLicense","capacity enterpriseName busClass created ticketPrice").exec(function(err, data) {
+    if (err) {
+      return res.status(400).send({
+
+  				message: errorHandler.getErrorMessage(err)
+  			});
+    } else {
+      console.log("api called");
+
+      res.status(200).send(data);
+    }
+  });
+};
+
+
+
+module.exports.createTicket = function(req, res){
+  res.render('./../public/views/ticket/addTicket.ejs', {
+    user: req.user || null,
+    bus: req.bus
+    //request: req
+   
+  });
+  }
+
+
+
+
+
+
+
+
+
+
+
 module.exports.createBus = function(req, res){
   res.render('./../public/views/bus/addBus.ejs', {
     user: req.user || null,
@@ -125,3 +165,6 @@ exports.busByID = function(req, res, next, id) {
 		next();
 	});
 };
+
+
+

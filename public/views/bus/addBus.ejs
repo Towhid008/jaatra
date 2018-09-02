@@ -28,6 +28,9 @@
                               </br>
                         
                            <button class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+                          <div>
+                           <button  class="btn btn-primary btn-lg btn-block" id="edit">Edit List</button>
+                            </div>
                       </div>
                 
                <div class="col-sm-6">
@@ -121,5 +124,28 @@
          
             
         </script>
+    
+    
+<script>
+  $("#edit").click(function(){
+   var pickup= $('#source').val();
+   var destination= $('#destination').val();
+   var busLicense='12345'; 
+   var query = "busLicense="+busLicense;
+    $.get("/api/busesList"+query, function(data, status){
+      var html = new EJS({url: '/views/bus/BusList.ejs'}).render({buses:data});
+    $("#list").html(html);
+    });
+  });
+  </script>    
+    
+    
+
+    
+    
+    
+
+    
+    
     </body>
 </html>

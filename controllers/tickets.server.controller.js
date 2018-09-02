@@ -56,6 +56,40 @@ module.exports.searchView= function(req, res){
     request: req,
     tickets: data
   });
+  
+  
+  
+  
+  
+  
+  
+  module.exports.findView= function(req, res){
+  
+  Ticket.find(function(err, data) {
+    if (err) {
+      return res.status(400).send({
+
+  				message: errorHandler.getErrorMessage(err)
+  			});
+    } else {
+      console.log("api called");
+  
+  res.render('public/views/ticket/editTicketList.ejs', {
+    user: req.user || null,
+    request: req,
+    tickets: data
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 }
 });

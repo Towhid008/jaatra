@@ -7,7 +7,13 @@ module.exports = function(app){
 	.get(buses.list)
 	.post(users.requiresLogin, buses.create);
 	
+
+app.route('/api/busesList')
+	.get(buses.busesList)
+	.post(users.requiresLogin, buses.create);
+	
 	app.route('/buses/new').get(buses.createBus);
+	//app.route('/buses/findView').get(buses.findView);
 	
 	app.route('/contact').get(buses.contactView);
 	

@@ -39,7 +39,13 @@ var BusSchema = {
   created: {
     type: Date,
     default: Date.now
+  },
+  
+  tickets: {
+    type: Schema.ObjectId,
+    ref: 'Ticket'
   }
+  
   
 }
 
